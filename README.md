@@ -1,73 +1,68 @@
-# Welcome to your Lovable project
+# Lovable Project — Batik Bliss (React + Vite + TypeScript)
 
-## Project info
+A small e-commerce starter built with React, TypeScript, Vite, Tailwind CSS and shadcn-ui. Includes a cart context, responsive navbar and simple product pages.
 
-**URL**: https://lovable.dev/projects/ec7867a9-34e1-4dd5-95d8-d8a43c341ffc
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/ec7867a9-34e1-4dd5-95d8-d8a43c341ffc) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Tech stack
 
 - Vite
-- TypeScript
 - React
-- shadcn-ui
+- TypeScript
 - Tailwind CSS
+- shadcn-ui
+- lucide-react (icons)
+- npm
 
-## How can I deploy this project?
+## Quick start
 
-Simply open [Lovable](https://lovable.dev/projects/ec7867a9-34e1-4dd5-95d8-d8a43c341ffc) and click on Share -> Publish.
+Prerequisite: Node.js and npm installed.
 
-## Can I connect a custom domain to my Lovable project?
+1. Clone the repo:
 
-Yes, you can!
+2. Install dependencies:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+3. Run dev server:
+4. 
+4. Open the URL shown in the terminal (usually `http://localhost:5173`).
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Scripts
+
+- `npm run dev` — start dev server with hot reload  
+- `npm run build` — create production build in `dist`  
+- `npm run preview` — preview the production build locally  
+- `npm test` — run tests (if configured)
+
+## Project structure (important files)
+
+- `src/` — application source  
+- `src/components/` — UI components (e.g. `Navbar.tsx`)  
+- `src/contexts/` — React contexts (e.g. `CartContext`)  
+- `src/assets/` — images and static assets  
+- `vite.config.ts` — Vite config and aliases  
+- `tsconfig.json` — TypeScript config and path mappings
+
+## Aliases and image imports
+
+If you use the `@` alias in imports, ensure `vite.config.ts` and `tsconfig.json` both map `@` to `src`. Example `vite.config.ts`:
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+});
+
+5. {
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] }
+  },
+  "include": ["src"]
+}
+
