@@ -42,7 +42,7 @@ const Home = () => {
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <h2 className="text-4xl font-bold text-foreground mb-6">Our Story</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Batik Bliss brings you authentic Sri Lankan batik clothing, handcrafted by skilled
+              Loome brings you authentic Sri Lankan batik clothing, handcrafted by skilled
               artisans using traditional techniques passed down through generations. Each piece is
               unique, reflecting the rich cultural heritage of Sri Lanka.
             </p>

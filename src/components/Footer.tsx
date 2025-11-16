@@ -67,7 +67,7 @@ const Footer = () => {
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="mailto:info@batikbliss.com"
+                href="mailto:info@loome.com"
                 className="bg-primary-foreground/20 p-2 rounded-full hover:bg-primary-foreground/30 transition-colors"
                 aria-label="Email"
               >
@@ -81,7 +81,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/80">
-            © 2024 Batik Bliss. All rights reserved. Handcrafted with love in Sri Lanka.
+            © 2025 Loomé. All rights reserved. Handcrafted with love in Sri Lanka.
           </p>
         </div>
       </div>
