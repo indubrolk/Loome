@@ -5,7 +5,7 @@ const About = () => {
     <div className="container mx-auto px-4 py-12">
       {/* Header */}
       <div className="text-center mb-12 animate-fade-in">
-        <h1 className="text-5xl font-bold text-foreground mb-4">About Batik Bliss</h1>
+        <h1 className="text-5xl font-bold text-foreground mb-4">About Loome</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Discover the story behind our beautiful batik creations
         </p>
@@ -23,7 +23,7 @@ const About = () => {
         <div className="flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">Our Story</h2>
           <p className="text-muted-foreground mb-4">
-            Batik Bliss was founded with a passion for preserving and celebrating the rich tradition
+            Loome was founded with a passion for preserving and celebrating the rich tradition
             of Sri Lankan batik art. Our journey began with a simple mission: to bring the beauty
             of handcrafted batik clothing to the world while supporting local artisan communities.
           </p>
