@@ -3,16 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
-import productDress from "@/assets/product-dress.jpg";
+import productDress from "@/assets/product-dresses.jpg";
 import productShirt from "@/assets/product-shirt.jpg";
 import productSarong from "@/assets/product-sarong.jpg";
 import productAccessories from "@/assets/product-accessories.jpg";
+import productTop from "@/assets/product-top.png";
 
 const imageMap: Record<string, string> = {
-  "product-dress.jpg": productDress,
+  "product-dresses.jpg": productDress,
   "product-shirt.jpg": productShirt,
   "product-sarong.jpg": productSarong,
   "product-accessories.jpg": productAccessories,
+  "product-top.png": productTop,
 };
 
 const ProductCard = ({ product }: { product: Product }) => {
