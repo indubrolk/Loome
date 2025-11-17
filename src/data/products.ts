@@ -12,7 +12,7 @@ export const products = [
     name: "Batik Casual Shirt",
     price: 59.99,
     category: "Shirts",
-    image: "product-shirt.jpg",
+    image: "product-batikshirt.jpg",
     description: "Comfortable batik shirt with traditional navy and brown floral designs"
   },
   {
@@ -49,7 +49,7 @@ export const products = [
   },
   {
     id: 7,
-    name: "Luxury Batik Dress",
+    name: "Premium Batik Saree",
     price: 99.99,
     category: "Dresses",
     image: "",
@@ -60,7 +60,7 @@ export const products = [
     name: "Batik Scarf Collection",
     price: 29.99,
     category: "Accessories",
-    image: "product-accessories.jpg",
+    image: "batik-scarf.jpg",
     description: "Versatile batik scarves in various patterns"
   }
 ];
