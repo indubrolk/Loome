@@ -9,6 +9,9 @@ import productShirt from "@/assets/product-shirt.jpg";
 import productSarong from "@/assets/product-sarong.jpg";
 import productAccessories from "@/assets/product-accessories.jpg";
 import productbatikShirt from "@/assets/product-batikshirt.jpg";
+import productDresses from "@/assets/product-dresses.jpg";
+import productTop from "@/assets/product-top.png";
+import productScarf from "@/assets/batik-scarf.jpg"
 
 //I'm Moda Dinithi
 
@@ -18,6 +21,9 @@ const imageMap: Record<string, string> = {
   "product-sarong.jpg": productSarong,
   "product-accessories.jpg": productAccessories,
   "product-batikshirt.jpg": productbatikShirt,
+  "product-dresses.jpg" : productDresses,
+  "product-top.png" : productTop,
+  "batik-scarf.jpg" :productScarf,
 };
 
 const Cart = () => {
