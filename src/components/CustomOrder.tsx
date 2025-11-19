@@ -34,11 +34,11 @@ const CustomOrder: React.FC = () => {
                   <SelectValue placeholder="Select an item" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="t-shirt">T-Shirt</SelectItem>
-                  <SelectItem value="hoodie">Hoodie</SelectItem>
-                  <SelectItem value="cap">Cap</SelectItem>
-                  <SelectItem value="mug">Mug</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                  <SelectItem value="Shirt">Shirt</SelectItem>
+                  <SelectItem value="Top">Top</SelectItem>
+                  <SelectItem value="Sarong">Sarong</SelectItem>
+                  <SelectItem value="Saree">Saree</SelectItem>
+                  <SelectItem value="Dress">Dress</SelectItem>
                 </SelectContent>
               </Select>
             </div>
