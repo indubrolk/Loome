@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ShoppingCart, Menu, X, Search } from "lucide-react";
 import { useEffect, useState, FormEvent } from "react";
 import { useCart } from "@/contexts/CartContext";
+import { useUser } from "@/contexts/UserContext";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo2.png";
 
@@ -9,6 +10,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { getCartCount } = useCart();
+  const { user, logout } = useUser();
   const cartCount = getCartCount();
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,6 +41,11 @@ const Navbar = () => {
     if (isOpen) {
       setIsOpen(false);
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   return (
@@ -83,21 +90,35 @@ const Navbar = () => {
             </form>
           </div>
 
-          {/* Cart */}
-          <Link to="/cart" className="relative hidden md:inline-flex">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full bg-[#fdf1f0] text-[#7f0303] hover:bg-[#f9dbd7]"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#7f0303] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
-          </Link>
+          {/* Cart and Auth */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link to="/cart" className="relative">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full bg-[#fdf1f0] text-[#7f0303] hover:bg-[#f9dbd7]"
+              >
+                <ShoppingCart className="h-5 w-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-[#7f0303] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold">
+                    {cartCount}
+                  </span>
+                )}
+              </Button>
+            </Link>
+            {user ? (
+              <Button onClick={handleLogout} variant="ghost" className="text-sm font-bold">
+                Logout
+              </Button>
+            ) : (
+              <Link to="/login?resetLogin=true">
+                <Button variant="ghost" className="text-sm font-bold">
+                  Login
+                </Button>
+              </Link>
+            )}
+          </div>
+
 
           {/* Mobile controls */}
           <div className="md:hidden flex items-center space-x-3">
@@ -147,6 +168,19 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              <div className="border-t border-gray-200 pt-4">
+                {user ? (
+                  <Button onClick={handleLogout} variant="ghost" className="w-full text-left font-bold">
+                    Logout
+                  </Button>
+                ) : (
+                  <Link to="/login?resetLogin=true">
+                    <Button variant="ghost" className="w-full text-left font-bold">
+                      Login
+                    </Button>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         )}
