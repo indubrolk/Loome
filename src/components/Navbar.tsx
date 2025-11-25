@@ -23,6 +23,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Products", path: "/products" },
+    { name: "Artisans", path: "/artisans" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
     { name: "Custom Order", path: "/custom-order" },
@@ -70,7 +71,7 @@ const Navbar = () => {
             />
           </Link>
 
-          <div className="hidden md:flex flex-1 items-center justify-between gap-6">
+          <div className="hidden md:flex flex-1 items-center gap-6 justify-end ml-auto">
             {/* Desktop Navigation */}
             <div className="flex items-center space-x-10">
               {currentNavLinks.map((link) => (

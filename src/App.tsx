@@ -13,6 +13,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
+import CustomOrder from './components/CustomOrder'; 
+import Artisans from './pages/Artisans';
 import CustomOrder from './components/CustomOrder';
 import Login from "./pages/Login";
 import ArtisanDashboard from "./pages/ArtisanDashboard";
@@ -63,6 +65,7 @@ const App = () => (
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
                 <Route path="/custom-order" element={<CustomOrder />} />
+                <Route path="/artisans" element={<Artisans />} />    
               </Routes>
             </main>
             <Footer />
