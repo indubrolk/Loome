@@ -28,6 +28,10 @@ const Navbar = () => {
     { name: "Custom Order", path: "/custom-order" },
   ];
 
+  const artisanNavLinks = [
+    { name: "Dashboard", path: "/artisan-dashboard" },
+  ]
+
   const linkClasses = (path: string) =>
     `text-sm font-bold tracking-wide transition-colors ${
       location.pathname === path ? "text-[#7f0303]" : "text-muted-foreground hover:text-foreground"
@@ -48,6 +52,8 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const currentNavLinks = user && user.userType === "artisan" ? artisanNavLinks : navLinks;
+
   return (
     <nav
       style={{ fontFamily: "'Oswald', 'Inter', sans-serif" }}
@@ -56,19 +62,18 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center gap-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to={user && user.userType === "artisan" ? "/artisan-dashboard" : "/"} className="flex items-center space-x-3">
             <img
               src={logo}
               alt="Loome logo"
               className="h-12 w-auto"
             />
-            {/* <span className="text-xl font-extrabold tracking-wide text-[#1b1a1a]">Loome</span> */}
           </Link>
 
           <div className="hidden md:flex flex-1 items-center justify-between gap-6">
             {/* Desktop Navigation */}
             <div className="flex items-center space-x-10">
-              {navLinks.map((link) => (
+              {currentNavLinks.map((link) => (
                 <Link key={link.path} to={link.path} className={linkClasses(link.path)}>
                   {link.name}
                 </Link>
@@ -76,36 +81,40 @@ const Navbar = () => {
             </div>
 
             {/* Search */}
-            <form onSubmit={handleSearch} className="flex-1 max-w-sm">
-              <div className="flex items-center gap-3 rounded-full border border-[#f1ddd9] bg-white/80 px-4 py-2 shadow-inner focus-within:border-[#7f0303]">
-                <Search className="h-4 w-4 text-[#c08d7c]" />
-                <input
-                  type="search"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-transparent text-sm text-[#4b1f17] placeholder:text-[#c7a6a0] focus:outline-none"
-                />
-              </div>
-            </form>
+            {!(user && user.userType === "artisan") && (
+              <form onSubmit={handleSearch} className="flex-1 max-w-sm">
+                <div className="flex items-center gap-3 rounded-full border border-[#f1ddd9] bg-white/80 px-4 py-2 shadow-inner focus-within:border-[#7f0303]">
+                  <Search className="h-4 w-4 text-[#c08d7c]" />
+                  <input
+                    type="search"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full bg-transparent text-sm text-[#4b1f17] placeholder:text-[#c7a6a0] focus:outline-none"
+                  />
+                </div>
+              </form>
+            )}
           </div>
 
           {/* Cart and Auth */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/cart" className="relative">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full bg-[#fdf1f0] text-[#7f0303] hover:bg-[#f9dbd7]"
-              >
-                <ShoppingCart className="h-5 w-5" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#7f0303] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold">
-                    {cartCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
+            {!(user && user.userType === "artisan") && (
+              <Link to="/cart" className="relative">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full bg-[#fdf1f0] text-[#7f0303] hover:bg-[#f9dbd7]"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-[#7f0303] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold">
+                      {cartCount}
+                    </span>
+                  )}
+                </Button>
+              </Link>
+            )}
             {user ? (
               <Button onClick={handleLogout} variant="ghost" className="text-sm font-bold">
                 Logout
@@ -122,16 +131,18 @@ const Navbar = () => {
 
           {/* Mobile controls */}
           <div className="md:hidden flex items-center space-x-3">
-            <Link to="/cart" className="relative">
-              <Button variant="ghost" size="icon" className="rounded-full bg-[#fdf1f0] text-[#7f0303]">
-                <ShoppingCart className="h-5 w-5" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#7f0303] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold">
-                    {cartCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
+            {!(user && user.userType === "artisan") && (
+              <Link to="/cart" className="relative">
+                <Button variant="ghost" size="icon" className="rounded-full bg-[#fdf1f0] text-[#7f0303]">
+                  <ShoppingCart className="h-5 w-5" />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-[#7f0303] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold">
+                      {cartCount}
+                    </span>
+                  )}
+                </Button>
+              </Link>
+            )}
             <button
               onClick={() => setIsOpen((prev) => !prev)}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[#f1ddd9] text-[#7f0303]"
@@ -145,20 +156,22 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden pb-6">
             <div className="mt-4 rounded-2xl border border-[#f4e5e0] bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)] p-6 space-y-4 animate-slide-up">
-              <form onSubmit={handleSearch}>
-                <div className="flex items-center gap-3 rounded-full border border-[#f1ddd9] bg-white/80 px-4 py-2 shadow-inner focus-within:border-[#7f0303]">
-                  <Search className="h-4 w-4 text-[#c08d7c]" />
-                  <input
-                    type="search"
-                    placeholder="Search"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-transparent text-sm text-[#4b1f17] placeholder:text-[#c7a6a0] focus:outline-none"
-                  />
-                </div>
-              </form>
+              {!(user && user.userType === "artisan") && (
+                <form onSubmit={handleSearch}>
+                  <div className="flex items-center gap-3 rounded-full border border-[#f1ddd9] bg-white/80 px-4 py-2 shadow-inner focus-within:border-[#7f0303]">
+                    <Search className="h-4 w-4 text-[#c08d7c]" />
+                    <input
+                      type="search"
+                      placeholder="Search"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full bg-transparent text-sm text-[#4b1f17] placeholder:text-[#c7a6a0] focus:outline-none"
+                    />
+                  </div>
+                </form>
+              )}
 
-              {navLinks.map((link) => (
+              {currentNavLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -190,3 +203,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

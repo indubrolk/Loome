@@ -26,11 +26,11 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // Mock authentication
-    if (email === "test@example.com" && password === "password") {
-      login({ name: "Test User", email, userType });
-      navigate("/");
+    login({ name: "Test User", email: "test@example.com", userType });
+    if (userType === "artisan") {
+      navigate("/artisan-dashboard");
     } else {
-      alert("Invalid credentials");
+      navigate("/");
     }
   };
 
@@ -65,7 +65,6 @@ const Login = () => {
               placeholder="test@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
           </div>
           <div className="space-y-2">
@@ -76,7 +75,6 @@ const Login = () => {
               placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
           </div>
           <Button type="submit" className="w-full bg-[#7f0303] text-white hover:bg-[#5a0202]">
