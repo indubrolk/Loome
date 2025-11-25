@@ -29,7 +29,7 @@ const currencyFormatter = new Intl.NumberFormat("en-US", {
 });
 
 const ProductCard = ({ product, onAddToCart }: { product: Product; onAddToCart?: (product: Product) => void }) => (
-  <div className="group rounded-[32px] bg-white border border-[#f4e5e0] shadow-[0_25px_70px_rgba(15,23,42,0.06)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)]">
+  <div className="group rounded-[32px] bg-white border border-[#f4e5e0] shadow-[0_25px_70px_rgba(15,23,42,0.06)] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(15,23,42,0.12)] flex flex-col">
     <div className="relative h-80 overflow-hidden">
       <img
         src={imageMap[product.image]}
@@ -37,10 +37,10 @@ const ProductCard = ({ product, onAddToCart }: { product: Product; onAddToCart?:
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
     </div>
-    <div className="p-6 space-y-4">
-      <div>
-        <h3 className="text-xl font-semibold text-[#2a1a17]">{product.name}</h3>
-        <p className="mt-1 text-sm text-[#8c6d64]">{product.category}</p>
+    <div className="p-6 space-y-4 flex flex-col flex-grow">
+      <div className="flex-grow">
+        <h3 className="text-xl font-semibold text-[#2a1a17] h-14">{product.name}</h3>
+        <p className="mt-1 text-sm text-[#8c6d64] h-5">{product.category}</p>
         <div className="mt-3 text-lg font-semibold text-[#4b1f17]">
           {currencyFormatter.format(product.price)}
         </div>

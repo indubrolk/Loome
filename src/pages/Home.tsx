@@ -95,16 +95,18 @@ const Home = () => {
                 </span>
                 <h3 className="text-xl font-semibold text-[#1c1b1b] mt-3">{product.name}</h3>
                 <p className="text-sm text-muted-foreground mt-2 flex-1">{product.description}</p>
-                <div className="mt-6 flex items-center justify-between">
+                <div className="mt-6 flex items-center justify-between flex-wrap gap-2">
                   <span className="text-lg font-bold text-[#1c1b1b]">
                     {currencyFormatter.format(product.price)}
                   </span>
-                  <Button
-                    onClick={() => handleAddToCart(product)}
-                    className="rounded-full bg-[#b10d0d] hover:bg-[#900a0a] text-white px-6"
-                  >
-                    Add to Cart
-                  </Button>
+                  <div>
+                    <Button
+                      onClick={() => handleAddToCart(product)}
+                      className="rounded-full bg-[#b10d0d] hover:bg-[#900a0a] text-white px-6"
+                    >
+                      Add to Cart
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
